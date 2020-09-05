@@ -1,4 +1,3 @@
-  
 class Ground {
     constructor(x,y,width,height) {
       var options = {
@@ -11,8 +10,10 @@ class Ground {
     }
     display(){
       var pos =this.body.position;
+      push();
       rectMode(CENTER);
-      fill("white");
+      fill("brown");
       rect(pos.x, pos.y, this.width, this.height);
+      pop();
     }
   }
