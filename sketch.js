@@ -16,6 +16,7 @@ function setup() {
 
   engine = Engine.create();
   world = engine.world;
+  ground=new Ground(795,2945,300,10)
   //level 1
   block1=new Block(330,235,30,40);
   block2=new Block(360,235,30,40);
@@ -33,6 +34,7 @@ function setup() {
 function draw() {
   background(255,255,255); 
   Engine.update(engine); 
+  ground.display();
   block1.display();
   block2.display();
   block3.display();
