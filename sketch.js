@@ -30,9 +30,14 @@ function setup() {
   block8=new Block(420,195,30,40,"pink");
   //level 3
   block9=new Block(390,155,30,40,"aquamarine");
-  sling= new SlingShot(this.polygon,{x:100,y:200});
-  polygon=createSprite(200,200,20,20);
+ var options ={
+   restitution:0.4,
+  density:0.5,
+  friction:1
+ }
+  polygon=Bodies.rectangle(200,200,20,20,options);
   World.add(world,polygon);
+  sling= new SlingShot(polygon,{x:100,y:200});
 }
 
 function draw() {
@@ -50,6 +55,14 @@ function draw() {
   block8.display();
   block9.display();
   imageMode(CENTER);
-  iage(polygon_ig,polygon,position.x,position.y,40,40);
+  image(polygon_img,polygon.position.x,polygon.position.y,40,40);
   drawSprites();
+}
+function mouseDragged(){
+  Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
+}
+
+
+function mouseReleased(){
+  sling.fly();
 }
